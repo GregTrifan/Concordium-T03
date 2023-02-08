@@ -27,7 +27,7 @@ const Counter = () => {
             else 
                 setProgressPercent(0)
             
-        },150)
+        },450)
         return () => {
       clearInterval(intervalId);
     };
@@ -60,14 +60,13 @@ const Counter = () => {
 
     const increment = () => {
         if (walletPresent) {
-            console.log(wallet.provider)
             wallet.provider
             .sendTransaction(
                 wallet.address,
                 AccountTransactionType.Update,
                 {
                     amount: new CcdAmount(0n),
-                    contract: {
+                    contractAddress: {
                         index:CONTRACT_INDEX,
                         subindex: BigInt(0)
                     },
@@ -99,7 +98,7 @@ const Counter = () => {
                 AccountTransactionType.Update,
                 {
                     amount: new CcdAmount(0n),
-                    contract: {
+                    contractAddress: {
                         index:CONTRACT_INDEX,
                         subindex: BigInt(0)
                     },
