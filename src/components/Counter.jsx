@@ -27,11 +27,12 @@ const Counter = () => {
             else 
                 setProgressPercent(0)
             
-        },300)
+        },150)
         return () => {
       clearInterval(intervalId);
     };
     },[progressPercent]);
+
     const fetchCount = () => {
         if (walletPresent) {
             wallet.provider
@@ -59,6 +60,7 @@ const Counter = () => {
 
     const increment = () => {
         if (walletPresent) {
+            console.log(wallet.provider)
             wallet.provider
             .sendTransaction(
                 wallet.address,
@@ -104,7 +106,6 @@ const Counter = () => {
                     receiveName:`${CONTRACT_NAME}.decrement`,
                     maxContractExecutionEnergy: 3000n
                 },
-                0,
                 RAW_SCHEMA
             )
             .then((txHash)=>{toast.custom((t) => (
